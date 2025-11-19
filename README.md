@@ -1,47 +1,40 @@
-# user_login
+# Project Title (Update)
 
-Command line helpers for creating, updating, deleting, and authenticating users in a Postgres database.
+Add a description of your project here.
 
-## Prerequisites
+## Instructions for Build and Use
 
-- Python 3.10+
-- `psycopg2` installed in your virtual environment
-- A `users` table with at least the following columns:
-  ```sql
-  CREATE TABLE IF NOT EXISTS users (
-      id SERIAL PRIMARY KEY,
-      username TEXT NOT NULL,
-      display_name TEXT NOT NULL,
-      email TEXT NOT NULL UNIQUE,
-      religion TEXT NOT NULL,
-      password_hash TEXT NOT NULL,
-      created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-      updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
-  );
-  ```
+Steps to build and/or run the software:
 
-## Configuration
+1. Create a database in postgre SQL
+2. Add a table with the following fields id, username, display_name, email, religion, password_hash, created_at, updated_at
+3. update a personal .env file that holds the login information for this database with the fields in the user_service.py
 
-Connection details default to the environment variables below (falling back to the existing local defaults shown):
+Instructions for using the software:
 
-| Variable      | Default          |
-| ------------- | ---------------- |
-| `DB_HOST`     | `localhost`      |
-| `DB_PORT`     | `5432`           |
-| `DB_NAME`     | `cameronpaschal` |
-| `DB_USER`     | `postgres`       |
-| `DB_PASSWORD` | `bigpoppa`       |
+1. Run the user_cli.py file
+2. Interact with the program using the instructions
 
-You can override any of these when running the CLI by supplying `--db-host`, `--db-name`, etc.
+## Development Environment
 
-## Usage
+To recreate the development environment, you need the following software and/or libraries with the specified versions:
 
-`user_cli.py` is a minimal interactive loop that prompts you for the action you want to perform (create, view, update, delete, list, or test a login). Just run:
+- PostgreSQL
+- binascii
+- psycopg2
 
-```bash
-python user_cli.py
-```
+## Useful Websites to Learn More
 
-and follow the on-screen prompts. Any fields you leave blank during updates stay unchanged. Password prompts use `getpass` so they are not echoed in the terminal.
+I found these websites useful in developing this software:
 
-Under the hood passwords are hashed with PBKDF2 (`sha256`, 310k iterations, random salt per-user). The hashes and salts are stored in the `password_hash` / `password_salt` columns whenever you create or update a user.
+- https://www.postgresql.org/
+-
+-
+
+## Future Work
+
+The following items I plan to fix, improve, and/or add to this project in the future:
+
+- [ ] Add more user functionality (more fields, more data)
+- [ ] Add in a web interface for logging in
+- [ ]
